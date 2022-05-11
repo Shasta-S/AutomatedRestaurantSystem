@@ -6,97 +6,154 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalculateBill extends JFrame implements ActionListener {
-    private JPanel panelCenter, panelNorth, panelSouth;
-    private JLabel lblReceipt,lblorderNo, lblitemName, lblItemPrice, lblTotalprice;
-    private JTextField txtoNo, txtitem,txtitemPrice,txttotalPrice;
-    private JButton btnNext,  btnBack, btnExit;
-    private Font ft1, ft2;
-    int size;
+    private JPanel panelNorth, panelCenter, panelSouth;
+    private JLabel lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty,
+                    lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,
+                    lblWaffle, lblWaffleQty;
+    private JTextField txtNachosPrice, txtBuffaloPrice, txtBreadPrice, txtSteakPrice, txtColaPrice, txtTeaPrice,
+                        txtWafflePrice;
+    private JButton btnCalculate,  btnBack,btnPayment, btnExit;
+    private Font ft1, ft2, ft3;
 
     public CalculateBill() {
-
-        super("Receipt");
+        super("Automated Restaurant System");
         panelNorth = new JPanel();
         panelCenter = new JPanel();
         panelSouth = new JPanel();
-        lblReceipt = new JLabel("Receipt");
 
+        lblHeadingConfirm = new JLabel("Order Confirmation");
 
-        lblorderNo = new JLabel("Order No");
-        txtoNo = new JTextField("1200");
+        lblItem = new JLabel("Item:"); //HEADINGS
+        lblQty = new JLabel("Quantity:");
+        lblPrice = new JLabel("Price:");
 
-        lblitemName = new JLabel("Item Name");
-        txtitem = new JTextField("Toasted Steak sandwich");
+        lblNachos = new JLabel("Nachos (Half Portion)"); //Nachos
+        lblNachosQty = new JLabel("1");
+        txtNachosPrice = new JTextField("R45,00");
 
+        lblBuffalo = new JLabel("Buffalo Wings"); //Buffalo Wings
+        lblBuffaloQty = new JLabel("1");
+        txtBuffaloPrice = new JTextField("R30,00");
 
-        lblItemPrice = new JLabel("Item Price");
-        txtitemPrice = new JTextField("R80");
+        lblBread = new JLabel("Garlic Bread"); //Garlic Bread
+        lblBreadQty = new JLabel("1");
+        txtBreadPrice = new JTextField("R20,00");
 
-        lblTotalprice = new JLabel("Total Price");
-        txttotalPrice= new JTextField("R80");
+        lblSteak = new JLabel("Steak"); //Sirloin Steak
+        lblSteakQty = new JLabel("2");
+        txtSteakPrice = new JTextField("R145,00");
 
-        btnNext = new JButton("Next");
+        lblCola = new JLabel("Coca Cola (No sugar)"); //Coca Cola (No sugar)
+        lblColaQty = new JLabel("2");
+        txtColaPrice = new JTextField("R20,00");
+
+        lblTea = new JLabel("Ice Tea (Lemon)"); // Ice Tea (Lemon)
+        lblTeaQty = new JLabel("1");
+        txtTeaPrice = new JTextField("R10,00");
+
+        lblWaffle = new JLabel("Waffle + Ice-cream"); //Waffle + Ice-cream
+        lblWaffleQty = new JLabel("2");
+        txtWafflePrice = new JTextField("R50,00");
+
+        btnCalculate = new JButton("Calculate Bill");
         btnBack = new JButton("Back");
+        btnPayment = new JButton("Payment");
         btnExit = new JButton("Exit");
-
-
 
         ft1 = new Font("Arial", Font.BOLD, 29);
         ft2 = new Font("Arial", Font.BOLD, 15);
+        ft3 = new Font("Arial", Font.BOLD,20);
     }
 
     public void setCalculateGUI() {
         panelNorth.setLayout(new FlowLayout());
-        panelCenter.setLayout(new GridLayout(5, 2));
+        panelCenter.setLayout(new GridLayout(8,3));
         panelSouth.setLayout(new GridLayout(1, 3));
 
-
-        panelNorth.add(lblReceipt);
-        lblReceipt.setFont(ft1);
-        lblReceipt.setForeground(new Color(105, 105, 105));
+        panelNorth.add(lblHeadingConfirm);
+        lblHeadingConfirm.setFont(ft1);
+        lblHeadingConfirm.setForeground(new Color(105, 105, 105));
 
         panelNorth.setBackground(new Color(119, 136, 153));
         panelCenter.setBackground(new Color(211, 211, 211));
         panelSouth.setBackground(new Color(0, 0, 0));
 
-        lblorderNo .setFont(ft2);
-        lblorderNo .setHorizontalAlignment(JLabel.LEFT);
-        txtoNo.setFont(ft2);
-        panelCenter.add( lblorderNo);
-        panelCenter.add(txtoNo);
-        txtoNo.setBackground(new Color(211, 211, 211));
+        lblItem.setFont(ft3); // HEADINGS
+        panelCenter.add(lblItem);
+        lblQty.setFont(ft3);
+        lblQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblQty);
+        lblPrice.setFont(ft3);
+        lblPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblPrice);
 
+        lblNachos.setFont(ft2); //Nachos
+        panelCenter.add(lblNachos);
+        lblNachosQty.setFont(ft2);
+        lblNachosQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblNachosQty);
+        txtNachosPrice.setFont(ft2);
+        txtNachosPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtNachosPrice);
 
-        lblitemName .setFont(ft2);
-        lblitemName .setHorizontalAlignment(JLabel.LEFT);
-        txtitem.setFont(ft2);
-        panelCenter.add(lblitemName);
-        panelCenter.add(txtitem);
-        txtitem.setBackground(new Color(211, 211, 211));
+        lblBuffalo.setFont(ft2); //Buffalo Wings
+        panelCenter.add(lblBuffalo);
+        lblBuffaloQty.setFont(ft2);
+        lblBuffaloQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblBuffaloQty);
+        txtBuffaloPrice.setFont(ft2);
+        txtBuffaloPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtBuffaloPrice);
 
+        lblBread.setFont(ft2); // Garlic Bread
+        panelCenter.add(lblBread);
+        lblBreadQty.setFont(ft2);
+        lblBreadQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblBreadQty);
+        txtBreadPrice.setFont(ft2);
+        txtBreadPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtBreadPrice);
 
+        lblSteak.setFont(ft2); // Sirloin Steak
+        panelCenter.add(lblSteak);
+        lblSteakQty.setFont(ft2);
+        lblSteakQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblSteakQty);
+        txtSteakPrice.setFont(ft2);
+        txtSteakPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtSteakPrice);
 
-        lblItemPrice .setFont(ft2);
-        lblItemPrice .setHorizontalAlignment(JLabel.LEFT);
-        txtitemPrice.setFont(ft2);
-        panelCenter.add(lblItemPrice);
-        panelCenter.add(txtitemPrice);
-        txtitemPrice.setBackground(new Color(211, 211, 211));
+        lblCola.setFont(ft2); // Coca Cola (No sugar)
+        panelCenter.add(lblCola);
+        lblColaQty.setFont(ft2);
+        lblColaQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblColaQty);
+        txtColaPrice.setFont(ft2);
+        txtColaPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtColaPrice);
 
+        lblTea.setFont(ft2); // Ice Tea (Lemon)
+        panelCenter.add(lblTea);
+        lblTeaQty.setFont(ft2);
+        lblTeaQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblTeaQty);
+        txtTeaPrice.setFont(ft2);
+        txtTeaPrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtTeaPrice);
 
+        lblWaffle.setFont(ft2); // Waffle + Ice-cream
+        panelCenter.add(lblWaffle);
+        lblWaffleQty.setFont(ft2);
+        lblWaffleQty.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(lblWaffleQty);
+        txtWafflePrice.setFont(ft2);
+        txtWafflePrice.setHorizontalAlignment(JLabel.CENTER);
+        panelCenter.add(txtWafflePrice);
 
-
-        lblTotalprice .setFont(ft2);
-        lblTotalprice .setHorizontalAlignment(JLabel.LEFT);
-        txttotalPrice.setFont(ft2);
-        panelCenter.add(lblTotalprice);
-        panelCenter.add(txttotalPrice);
-        txttotalPrice.setBackground(new Color(211, 211, 211));
-
-
-
-        btnNext.setFont(ft2);
-        panelSouth.add(btnNext);
+        btnCalculate.setFont(ft2);
+        panelSouth.add(btnCalculate);
+        btnPayment.setFont(ft2);
+        panelSouth.add(btnPayment);
         btnBack.setFont(ft2);
         panelSouth.add(btnBack);
         btnExit.setFont(ft2);
@@ -108,7 +165,8 @@ public class CalculateBill extends JFrame implements ActionListener {
         this.add(panelSouth, BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        btnNext.addActionListener(this);
+        btnCalculate.addActionListener(this);
+        btnPayment.addActionListener(this);
         btnExit.addActionListener(this);
         btnBack.addActionListener(this);
 
@@ -121,10 +179,11 @@ public class CalculateBill extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Back")) {
+        if (e.getActionCommand().equals("Calculate Bill")) {
 
-        } else if (e.getActionCommand().equals("Next")) {
+        } else if (e.getActionCommand().equals("Payment")) {
 
+        } else if (e.getActionCommand().equals("Back")) {
 
         } else if (e.getActionCommand().equals("Exit")) {
             System.exit(0);
@@ -133,7 +192,6 @@ public class CalculateBill extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new CalculateBill().setCalculateGUI();
-
     }
 
 
