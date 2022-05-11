@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Calculate the bill" />
         <module name="CalculateTheBill" />
+        <module name="AutomatedRestaurantSystem" />
       </profile>
     </annotationProcessing>
   </component>
