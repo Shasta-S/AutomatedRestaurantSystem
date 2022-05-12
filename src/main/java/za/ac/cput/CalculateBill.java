@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 //
 public class CalculateBill extends JFrame implements ActionListener {
     private JPanel panelNorth, panelCenter, panelSouth;
-    private JLabel lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty, lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,lblWaffle, lblWaffleQty,lblOrderNo,lblDate,lbloNo;
-    private JTextField txtNachosPrice, txtBuffaloPrice, txtBreadPrice, txtSteakPrice, txtColaPrice, txtTeaPrice,
+    private JLabel lblTotalPrice, lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty, lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,lblWaffle, lblWaffleQty,lblOrderNo,lblDate,lbloNo;
+    private JTextField txtTotalPrice, txtNachosPrice, txtBuffaloPrice, txtBreadPrice, txtSteakPrice, txtColaPrice, txtTeaPrice,
                         txtWafflePrice;
     private JButton btnCalculate,  btnBack,btnPayment, btnExit;
     private Font ft1, ft2, ft3,ft4;
@@ -31,31 +31,34 @@ public class CalculateBill extends JFrame implements ActionListener {
 
         lblNachos = new JLabel("Nachos (Half Portion)"); //Nachos
         lblNachosQty = new JLabel("1");
-        txtNachosPrice = new JTextField("R45,00");
+        txtNachosPrice = new JTextField("45");
 
         lblBuffalo = new JLabel("Buffalo Wings"); //Buffalo Wings
         lblBuffaloQty = new JLabel("1");
-        txtBuffaloPrice = new JTextField("R30,00");
+        txtBuffaloPrice = new JTextField("34");
 
         lblBread = new JLabel("Garlic Bread"); //Garlic Bread
         lblBreadQty = new JLabel("1");
-        txtBreadPrice = new JTextField("R20,00");
+        txtBreadPrice = new JTextField("56");
 
         lblSteak = new JLabel("Steak"); //Sirloin Steak
         lblSteakQty = new JLabel("2");
-        txtSteakPrice = new JTextField("R145,00");
+        txtSteakPrice = new JTextField("45");
 
         lblCola = new JLabel("Coca Cola (No sugar)"); //Coca Cola (No sugar)
         lblColaQty = new JLabel("2");
-        txtColaPrice = new JTextField("R20,00");
+        txtColaPrice = new JTextField("12");
 
         lblTea = new JLabel("Ice Tea (Lemon)"); // Ice Tea (Lemon)
         lblTeaQty = new JLabel("1");
-        txtTeaPrice = new JTextField("R10,00");
+        txtTeaPrice = new JTextField("34");
 
         lblWaffle = new JLabel("Waffle + Ice-cream"); //Waffle + Ice-cream
         lblWaffleQty = new JLabel("2");
-        txtWafflePrice = new JTextField("R50,00");
+        txtWafflePrice = new JTextField("89");
+
+        lblTotalPrice = new JLabel("Total Price: ");
+        txtTotalPrice = new JTextField();
 
         btnCalculate = new JButton("Calculate Bill");
         btnBack = new JButton("Back");
@@ -65,7 +68,6 @@ public class CalculateBill extends JFrame implements ActionListener {
         ft1 = new Font("Arial", Font.BOLD, 29);
         ft2 = new Font("Arial", Font.BOLD, 15);
         ft3 = new Font("Arial", Font.BOLD,20);
-
 
     }
 
@@ -168,6 +170,13 @@ public class CalculateBill extends JFrame implements ActionListener {
         txtWafflePrice.setHorizontalAlignment(JLabel.CENTER);
         panelCenter.add(txtWafflePrice);
 
+        lblTotalPrice.setFont(ft2);
+        panelCenter.add(lblTotalPrice);
+        txtTotalPrice.setFont(ft2);
+        panelCenter.add(txtTotalPrice);
+        txtTotalPrice.setHorizontalAlignment(JLabel.CENTER);
+
+
         btnCalculate.setFont(ft2);
         panelSouth.add(btnCalculate);
         btnPayment.setFont(ft2);
@@ -197,6 +206,31 @@ public class CalculateBill extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == btnCalculate ){
+            try {
+                String st1 = String.valueOf(txtNachosPrice.getText());
+                String st2 = String.valueOf(txtBuffaloPrice.getText());
+                String st3 = String.valueOf(txtColaPrice.getText());
+                String st4 = String.valueOf(txtWafflePrice.getText());
+                String st5 = String.valueOf(txtBreadPrice.getText());
+                String st6 = String.valueOf(txtTeaPrice.getText());
+
+                int number1 = Integer.parseInt(st1);
+                int number2 = Integer.parseInt(st2);
+                int number3 = Integer.parseInt(st3);
+                int number4 = Integer.parseInt(st4);
+                int number5 = Integer.parseInt(st5);
+                int number6 = Integer.parseInt(st6);
+
+                String totalPrice2 = String.valueOf((number1 + number2 + number3 + number4 + number5 + number6));
+                txtTotalPrice.setText(String.valueOf(totalPrice2));
+
+            }catch (NumberFormatException ex){
+                ex.printStackTrace();
+            }
+        }
+
         if (e.getActionCommand().equals("Calculate Bill")) {
 
         } else if (e.getActionCommand().equals("Payment")) {
@@ -207,12 +241,9 @@ public class CalculateBill extends JFrame implements ActionListener {
             System.exit(0);
         }
     }
-
     public static void main(String[] args) {
         new CalculateBill().setCalculateGUI();
     }
-
-
 }
 
 
