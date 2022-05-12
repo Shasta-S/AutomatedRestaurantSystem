@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 //
 public class CalculateBill extends JFrame implements ActionListener {
     private JPanel panelNorth, panelCenter, panelSouth;
-    private JLabel lblTotalPrice, lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty, lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,lblWaffle, lblWaffleQty,lblOrderNo,lblDate,lbloNo;
+    private JLabel lblTotalPrice, lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty, lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,lblWaffle, lblWaffleQty,lblOrderNo,lblDate,lbloNo, lblBlank;
     private JTextField txtTotalPrice, txtNachosPrice, txtBuffaloPrice, txtBreadPrice, txtSteakPrice, txtColaPrice, txtTeaPrice,
                         txtWafflePrice;
     private JButton btnCalculate,  btnBack,btnPayment, btnExit;
@@ -57,6 +57,7 @@ public class CalculateBill extends JFrame implements ActionListener {
         lblWaffleQty = new JLabel("2");
         txtWafflePrice = new JTextField("89");
 
+        lblBlank = new JLabel("");
         lblTotalPrice = new JLabel("Total Price: ");
         txtTotalPrice = new JTextField();
 
@@ -170,11 +171,14 @@ public class CalculateBill extends JFrame implements ActionListener {
         txtWafflePrice.setHorizontalAlignment(JLabel.CENTER);
         panelCenter.add(txtWafflePrice);
 
-        lblTotalPrice.setFont(ft2);
+        panelCenter.add(lblBlank); // Blank Space
+        lblTotalPrice.setFont(ft2); // Total Price
+        lblTotalPrice.setHorizontalAlignment(JLabel.CENTER);
         panelCenter.add(lblTotalPrice);
         txtTotalPrice.setFont(ft2);
         panelCenter.add(txtTotalPrice);
         txtTotalPrice.setHorizontalAlignment(JLabel.CENTER);
+
 
 
         btnCalculate.setFont(ft2);
@@ -232,6 +236,21 @@ public class CalculateBill extends JFrame implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Calculate Bill")) {
+            JOptionPane.showMessageDialog(this, "RECEIPT: " + "\n" +
+                    "___________________________________" + "\n" +
+                    "Date: 13 May 2022 12:00pm" + "\n" +
+                    "Order Number: " + " 2100" + "\n" +
+                    "------------------------------------------" + "\n" +
+                    "Item:" + "        " + "Price:" + "\n" +
+                    "Nachos (Half Portion): " + "R45,00" + "\n" +
+                    "Buffalo Wings: " + "R34,00" + "\n" +
+                    "Garlic Bread: " + "R56,00" + "\n" +
+                    "Steak: " + "R45,00" + "\n" +
+                    "Coca Cola (No sugar): " + "R12,00" + "\n" +
+                    "Ice Tea (Lemon): " + "R34,00" + "\n" +
+                    "Waffle + Ice Cream: " + "R89,00" + "\n" +
+                    "TOTAL PRICE: " + "R270,00" + "\n" +
+                    "PROCEED TO PAYMENT");
 
         } else if (e.getActionCommand().equals("Payment")) {
 
