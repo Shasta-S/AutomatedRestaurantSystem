@@ -7,13 +7,11 @@ import java.awt.event.ActionListener;
 
 public class CalculateBill extends JFrame implements ActionListener {
     private JPanel panelNorth, panelCenter, panelSouth;
-    private JLabel lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty,
-                    lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,
-                    lblWaffle, lblWaffleQty;
+    private JLabel lblHeadingConfirm, lblItem, lblQty, lblPrice, lblNachos, lblNachosQty, lblBuffalo, lblBuffaloQty, lblBread, lblBreadQty, lblSteak, lblSteakQty, lblCola, lblColaQty, lblTea, lblTeaQty,lblWaffle, lblWaffleQty,lblOrderNo,lblDate,lbloNo;
     private JTextField txtNachosPrice, txtBuffaloPrice, txtBreadPrice, txtSteakPrice, txtColaPrice, txtTeaPrice,
                         txtWafflePrice;
     private JButton btnCalculate,  btnBack,btnPayment, btnExit;
-    private Font ft1, ft2, ft3;
+    private Font ft1, ft2, ft3,ft4;
 
     public CalculateBill() {
         super("Automated Restaurant System");
@@ -22,6 +20,10 @@ public class CalculateBill extends JFrame implements ActionListener {
         panelSouth = new JPanel();
 
         lblHeadingConfirm = new JLabel("Order Confirmation");
+
+        lblDate = new JLabel("Date: 13 May 2022 12:00pm");
+        lblOrderNo = new JLabel("Order No");
+        lbloNo = new JLabel("1200");
 
         lblItem = new JLabel("Item:"); //HEADINGS
         lblQty = new JLabel("Quantity:");
@@ -63,11 +65,13 @@ public class CalculateBill extends JFrame implements ActionListener {
         ft1 = new Font("Arial", Font.BOLD, 29);
         ft2 = new Font("Arial", Font.BOLD, 15);
         ft3 = new Font("Arial", Font.BOLD,20);
+
+
     }
 
     public void setCalculateGUI() {
         panelNorth.setLayout(new FlowLayout());
-        panelCenter.setLayout(new GridLayout(8,3));
+        panelCenter.setLayout(new GridLayout(12,3));
         panelSouth.setLayout(new GridLayout(1, 3));
 
         panelNorth.add(lblHeadingConfirm);
@@ -76,7 +80,21 @@ public class CalculateBill extends JFrame implements ActionListener {
 
         panelNorth.setBackground(new Color(119, 136, 153));
         panelCenter.setBackground(new Color(211, 211, 211));
-        panelSouth.setBackground(new Color(0, 0, 0));
+
+
+
+        lblDate .setFont(ft2);
+        lblDate .setHorizontalAlignment(JLabel.LEFT);
+        panelCenter.add( lblDate);
+        lblDate.setForeground(new Color(112,128,144));
+        lblOrderNo .setFont(ft3);
+        lblOrderNo .setHorizontalAlignment(JLabel.CENTER);
+        lblOrderNo.setForeground(new Color(112,128,144));
+        lbloNo.setFont(ft3);
+        lbloNo.setHorizontalAlignment(JLabel.CENTER);
+        lbloNo.setForeground(new Color(112,128,144));
+        panelCenter.add( lblOrderNo);
+        panelCenter.add( lbloNo);
 
         lblItem.setFont(ft3); // HEADINGS
         panelCenter.add(lblItem);
